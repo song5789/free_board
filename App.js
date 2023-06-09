@@ -54,20 +54,60 @@ app.get("/page", function (req, res) {
 });
 
 app.post("/page", function (req, res) {
-  let { id, password } = req.body;
-  fs.readFile("./src/modify.html", "utf-8", function (err, data) {
-    DB.query("SELECT free_title, free_writer, free_password, free_content FROM free_board WHERE free_id = ?", [id], function (err, result) {
-      if (err) res.send(err);
-      else {
-        if (password == result[0].free_password) {
-          res.send(ejs.render(data, { selected: result[0] }));
-        } else {
-          fs.readFile("./src/wrong_info.html", "utf-8", function (err, data) {
-            res.send(data);
-          });
+  let { id, password, flag } = req.body;
+  if (+flag) {
+    fs.readFile("./src/modify.html", "utf-8", function (err, data) {
+      DB.query("SELECT free_title, free_writer, free_password, free_content FROM free_board WHERE free_id = ?", [id], function (err, result) {
+        if (err) res.send(err);
+        else {
+          if (password == result[0].free_password) {
+            res.send(ejs.render(data, { selected: result[0], id: id }));
+          } else {
+            fs.readFile("./src/wrong_info.html", "utf-8", function (err, data) {
+              res.send(data);
+            });
+          }
         }
-      }
+      });
     });
+  } else {
+    fs.readFile("./src/deletePage.html", "utf-8", function (err, data) {
+      DB.query("SELECT free_title, free_writer, free_password, free_content FROM free_board WHERE free_id = ?", [id], function (err, result) {
+        if (err) res.send(err);
+        else {
+          if (password == result[0].free_password) {
+            res.send(ejs.render(data, { id: id }));
+          } else {
+            fs.readFile("./src/wrong_info.html", "utf-8", function (err, data) {
+              res.send(data);
+            });
+          }
+        }
+      });
+    });
+  }
+});
+
+app.post("/update", function (req, res) {
+  let { title, content, id } = req.body;
+  DB.query("UPDATE free_board SET free_title = ?, free_content = ? WHERE free_id = ?", [title, content, id], function (err) {
+    if (err) res.send(err);
+    else {
+      fs.readFile("./src/page.html", "utf-8", function (err, data) {
+        DB.query("SELECT free_id, free_title, free_writer, free_content, free_writedate FROM free_board WHERE free_id = ?", [id], function (err, result) {
+          if (err) res.send(err);
+          else res.redirect("/");
+        });
+      });
+    }
+  });
+});
+
+app.get("/delete", function (req, res) {
+  let { id } = req.query;
+  DB.query("DELETE FROM free_board WHERE free_id = ?", [id], function (err) {
+    if (err) res.send(err);
+    else res.redirect("/");
   });
 });
 

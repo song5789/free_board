@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>게시판</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap");
+      html,
+      body {
+        margin: 0;
+        font-family: "Noto Sans KR", sans-serif !important;
+        color: #fff;
+      }
+      .wrap {
+        width: 100%;
+        height: 100vh;
+      }
+      .back-darkgray {
+        width: 100%;
+        height: 100%;
+        background-color: #303030;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      .del-message {
+        width: 50%;
+        height: 500px;
+        background-color: #707070;
+        border-radius: 7px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      .del-message > div:first-child {
+        width: 100%;
+        height: 100px;
+        text-align: center;
+        line-height: 100px;
+        color: #fff;
+        font-size: 2.2em;
+      }
+      .del-message > div:nth-child(2) {
+        width: 100%;
+        height: 50px;
+        text-align: center;
+        line-height: 50px;
+        color: inherit;
+        color: #c71633;
+        font-size: 1.5em;
+      }
+      .del-message > div:last-child {
+        width: 100%;
+        height: 75px;
+        text-align: center;
+        line-height: 75px;
+      }
+
+      .realDel {
+        width: 200px;
+        height: 50px;
+        border: none;
+        border-radius: 5px;
+        background-color: #c71633;
+        color: #fff;
+        font-size: 1.1em;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      a:link,
+      a:visited {
+        color: inherit;
+        text-decoration: none;
+      }
+      .del-message > div:last-child > div:last-child > button {
+        width: 200px;
+        height: 50px;
+        border: none;
+        border-radius: 5px;
+        background-color: #e9e9e9;
+        color: #303030;
+        font-size: 1.1em;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      .del-message > div:last-child > div > button:hover {
+        text-decoration: underline;
+      }
+      .flex-row {
+        display: flex;
+        flex-direction: row;
+      }
+      .align-c {
+        justify-content: center;
+        align-items: center;
+      }
+      .margin-left-20 {
+        margin-left: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="back-darkgray">
+        <div class="del-message">
+          <div>
+            <span>정말 삭제하시겠습니까?</span>
+          </div>
+          <div>
+            <span>복구가 불가능합니다.</span>
+          </div>
+          <div class="flex-row align-c">
+            <form method="get" action="/delete">
+              <input type="hidden" name="id" id="id" value="<%=id%>" />
+              <div>
+                <button class="realDel" type="submit">확인</button>
+              </div>
+            </form>
+            <div class="margin-left-20">
+              <button>취소</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      let backBtn = document.getElementsByTagName("button")[0];
+      backBtn.addEventListener("click", () => {
+        window.history.back();
+      });
+    </script>
+  </body>
+</html>

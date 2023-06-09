@@ -39,13 +39,30 @@
               <div class="config-area flex-row">
                 <input type="hidden" name="id" id="id" value="<%=selected.free_id%>" />
                 <input type="password" name="password" id="password" placeholder="비밀번호" />
-                <button class="margin-left-10" type="submit"><i class="fa fa-pencil"></i> 글 수정</button>
-                <button class="margin-left-10" type="submit"><i class="fa fa-trash"></i> 글 삭제</button>
+                <button class="margin-left-10 btn" type="submit" data-type="mod"><i class="fa fa-pencil"></i> 글 수정</button>
+                <button class="margin-left-10 btn" type="submit" data-type="del"><i class="fa fa-trash"></i> 글 삭제</button>
+                <input type="hidden" name="flag" id="flag" value="" />
+                <button class="margin-left-10"><a href="/">메인으로</a></button>
               </div>
             </form>
           </div>
         </div>
       </div>
     </div>
+    <script>
+      let flag = document.querySelector("#flag");
+
+      document.getElementsByTagName("form")[0].addEventListener("click", (e) => {
+        let condition = e.target.dataset.type;
+
+        switch (condition) {
+          case "mod":
+            flag.value = "1";
+            break;
+          case "del":
+            flag.value = "0";
+        }
+      });
+    </script>
   </body>
 </html>

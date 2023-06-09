@@ -5,29 +5,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>글 쓰기</title>
-    <link rel="stylesheet" href="/css/write.css" />
-    <link rel="stylesheet" href="../public/css/write.css" />
+    <link rel="stylesheet" href="/css/modify.css" />
+    <!-- <link rel="stylesheet" href="../public/css/modify.css" /> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
   </head>
   <body>
     <div class="wrap">
       <div class="flex-col align-c">
         <div class="write-body">
-          <form class="flex-col align-c" method="post">
-            <input type="text" name="title" id="title" placeholder="제목" value="<%=selected.free_title%>" required />
-            <div class="user-info flex-row align-c">
-              <input style="width: 100%" type="text" name="writer" id="write" placeholder="이름" value="<%=selected.free_writer%>" required />
+          <div>
+            <form class="flex-col align-c" action="/update" method="post">
+              <input type="text" name="title" id="title" placeholder="제목" value="<%=selected.free_title%>" required />
+              <div class="user-info flex-row align-c">
+                <input style="width: 100%" type="text" name="writer" id="write" placeholder="이름" value="<%=selected.free_writer%>" required disabled />
+              </div>
+              <textarea name="content" id="content" placeholder="글 내용 입력"><%=selected.free_content%></textarea>
+              <div class="btns">
+                <button type="submit"><i class="fa fa-pencil"></i>수정</button>
+                <input type="hidden" name="id" id="id" value="<%=id%>" />
+              </div>
+            </form>
+            <div class="btn-cancle">
+              <button class="cancle"><i class="fa fa-close"></i> 취소</button>
             </div>
-            <textarea name="content" id="content" placeholder="글 내용 입력"><%=selected.free_content%></textarea>
-            <div class="btns">
-              <button type="submit"><i class="fa fa-pencil"></i>수정</button>
-              <button>
-                <a href="/"><i class="fa fa-close"></i> 취소</a>
-              </button>
-            </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>
+    <script>
+      let cancle = document.getElementsByClassName("cancle")[0];
+      cancle.addEventListener("click", () => {
+        window.history.back();
+      });
+    </script>
   </body>
 </html>
