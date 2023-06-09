@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>자유게시판</title>
+    <!-- <link rel="stylesheet" href="../public/css/page.css" /> -->
+    <link rel="stylesheet" href="/css/page.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="flex-col align-c">
+        <div class="write-con">
+          <div>
+            <span><%=selected.free_title%></span>
+          </div>
+          <div class="flex-row">
+            <div class="flex-row">
+              <span style="margin-right: 7px">작성시간</span>
+              <span><%=t_f(selected.free_writedate)%></span>
+            </div>
+            <div class="flex-row align-c">
+              <div>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Unknown_person.jpg/542px-Unknown_person.jpg?20200423155822" alt="" />
+              </div>
+              <div>
+                <span><%=selected.free_writer%></span>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div>
+              <span><%=selected.free_content%></span>
+            </div>
+          </div>
+          <div>
+            <form method="post">
+              <div class="config-area flex-row">
+                <input type="hidden" name="id" id="id" value="<%=selected.free_id%>" />
+                <input type="password" name="password" id="password" placeholder="비밀번호" />
+                <button class="margin-left-10" type="submit"><i class="fa fa-pencil"></i> 글 수정</button>
+                <button class="margin-left-10" type="submit"><i class="fa fa-trash"></i> 글 삭제</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

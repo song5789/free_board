@@ -1,0 +1,165 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap");
+body,
+html {
+  margin: 0;
+  font-family: "Noto Sans KR", sans-serif !important;
+  color: #e9e9e9;
+}
+
+.wrap {
+  width: 100%;
+  min-width: 1400px;
+  height: 100vh;
+  background-color: #303030;
+}
+
+.wrap > div:first-child {
+  width: 100%;
+  height: 100%;
+}
+
+.board-body {
+  width: 60%;
+
+  background-color: #707070;
+  border-radius: 7px;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+.align-center {
+  justify-content: center;
+  align-items: center;
+}
+.float {
+  float: left;
+}
+.clean-float::after {
+  clear: both;
+  content: "";
+  display: block;
+}
+.txt-center {
+  text-align: center;
+}
+
+.board-title {
+  width: 60%;
+  height: 50px;
+  font-size: 1.4em;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.board-title > span {
+  text-align: center;
+  line-height: 50px;
+  width: 35%;
+  height: 100%;
+  display: inline-block;
+  background-color: #707070;
+  border-radius: 7px;
+  box-shadow: 0px 0px 2px 1px #e5e5e5;
+}
+
+.btn-con {
+  width: 40%;
+  height: 50px;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+.btn-con button {
+  width: 100px;
+  height: 35px;
+  border: none;
+  border-radius: 7px;
+  background-color: #c71633;
+  color: #e9e9e9;
+  font-size: 0.8em;
+  font-weight: 600;
+}
+
+a:link,
+a:visited {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+button:hover {
+  box-shadow: 0px 0px 3px 1px #e5e5e5;
+  transition: 0.5s;
+}
+
+.content-head {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  border-bottom: 1px solid #303030;
+}
+.content-head > div:first-child {
+  width: 8%;
+}
+.content-head > div:nth-child(2) {
+  width: 70%;
+}
+.content-head > div:nth-child(3) {
+  width: 10%;
+}
+.content-head > div:last-child {
+  width: 10%;
+}
+.content-body {
+  width: 100%;
+}
+.content-body > div {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+}
+
+.content-body > div > div:first-child {
+  width: 8%;
+}
+.content-body > div > div:nth-child(2) {
+  width: 70%;
+}
+.content-body > div > div:nth-child(3) {
+  width: 10%;
+}
+.content-body > div > div:last-child {
+  width: 10%;
+}
+img {
+  max-width: 100% !important;
+  border-radius: 150px;
+}
+.writer-info {
+  width: 100%;
+}
+.writer-info > div:first-child {
+  width: 15%;
+  line-height: 50px;
+}
+
+.write-con:hover {
+  box-shadow: 0px 0px 2px 1px #e5e5e5;
+  background-color: #303030;
+  color: #fff;
+  transition: 0.5s;
+}
+
+.desc {
+  cursor: pointer;
+}
+.desc:hover {
+  color: #c71633;
+  text-decoration: underline;
+}

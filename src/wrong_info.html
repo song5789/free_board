@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>게시판</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap");
+      html,
+      body {
+        margin: 0;
+        font-family: "Noto Sans KR", sans-serif !important;
+        color: #fff;
+      }
+      .wrap {
+        width: 100%;
+        height: 100vh;
+      }
+      .back-darkgray {
+        width: 100%;
+        height: 100%;
+        background-color: #303030;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      .err-message {
+        width: 50%;
+        height: 500px;
+        background-color: #707070;
+        border-radius: 7px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      .err-message > div:first-child {
+        width: 100%;
+        height: 100px;
+        text-align: center;
+        line-height: 100px;
+        color: red;
+        font-size: 3em;
+      }
+      .err-message > div:nth-child(2) {
+        width: 100%;
+        height: 50px;
+        text-align: center;
+        line-height: 50px;
+        color: inherit;
+        font-size: 1.5em;
+      }
+      .err-message > div:last-child {
+        width: 100%;
+        height: 75px;
+        text-align: center;
+        line-height: 75px;
+      }
+
+      .err-message > div:last-child > button {
+        width: 200px;
+        height: 50px;
+        border: none;
+        border-radius: 5px;
+        background-color: #c71633;
+        color: #fff;
+        font-size: 1.1em;
+        cursor: pointer;
+      }
+      .err-message > div:last-child > button:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="back-darkgray">
+        <div class="err-message">
+          <div>
+            <span>잘못된 접근입니다!</span>
+          </div>
+          <div>
+            <span>입력한 정보가 맞지않습니다.</span>
+          </div>
+          <div>
+            <button>이전 페이지로 가기</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      let backBtn = document.getElementsByTagName("button")[0];
+      backBtn.addEventListener("click", () => {
+        window.history.back();
+      });
+    </script>
+  </body>
+</html>

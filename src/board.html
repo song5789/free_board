@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>자유게시판</title>
+    <link rel="stylesheet" href="/css/board.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="flex-col align-center">
+        <div class="clean-float" style="width: 60%">
+          <div class="board-title float">
+            <span>자유 게시판</span>
+          </div>
+          <div class="btn-con float flex-row">
+            <button>
+              <a href="/write"><i class="fa fa-pencil"></i> 글작성</a>
+            </button>
+          </div>
+        </div>
+        <div class="board-body">
+          <div class="board-content">
+            <div class="content-head clean-float">
+              <div class="float txt-center">
+                <span>번호</span>
+              </div>
+              <div class="float txt-center">
+                <span>제목</span>
+              </div>
+              <div class="float txt-center">
+                <span>작성자</span>
+              </div>
+              <div class="float txt-center">
+                <span>작성시간</span>
+              </div>
+            </div>
+            <div class="content-body">
+              <%listData.forEach((item,index)=>{%>
+              <div class="write-con clean-float">
+                <div class="link-num float txt-center"><%=item.free_id%></div>
+                <div class="desc float txt-center"><%=item.free_title%></div>
+                <div class="float txt-center">
+                  <div class="writer-info flex-row align-center">
+                    <div class="flex-row align-center" style="margin-right: 7px">
+                      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Unknown_person.jpg/542px-Unknown_person.jpg?20200423155822" alt="" />
+                    </div>
+                    <div><%=item.free_writer%></div>
+                  </div>
+                </div>
+                <div class="float txt-center"><%=t_f(item.free_writedate)%></div>
+              </div>
+              <%}) %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      let linkNum = document.querySelectorAll(".link-num");
+      let desc = document.querySelectorAll(".desc");
+      desc.forEach((v, index) => {
+        v.addEventListener("click", () => {
+          window.location = "/page?id=" + linkNum[index].innerText;
+        });
+      });
+    </script>
+  </body>
+</html>
